@@ -14,6 +14,17 @@ Everything that is already wired:
 
 Stack: React, Vite, TypeScript, TanStack Router + Query, shadcn/ui, Tailwind, Vitest.
 
+## Make it yours
+
+This is a template: make your own copy, don't clone it. This creates a new repository on your GitHub, with its own history, and downloads it:
+
+```bash
+gh repo create my-monday-app --template idand-boost/start-monday-client --private --clone
+cd my-monday-app
+```
+
+Or click **Use this template** at the top of this page. With `git clone`, your pushes would go to the template instead of your app.
+
 ## Start
 
 ```bash
