@@ -18,7 +18,6 @@ function HomePage() {
     <div className="space-y-10">
       <section className="grid gap-6 md:grid-cols-[1fr_300px] md:items-start">
         <div className="space-y-5">
-          <p className="text-sm font-medium text-primary">Become a monday developer · Track 2</p>
           <h1 className="text-3xl font-semibold sm:text-4xl">Your starting point for monday client apps</h1>
           <p className="max-w-prose text-muted-foreground">
             Everything the course builds, already wired: the SDK in two worlds, the API without leaking a token, a queue

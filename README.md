@@ -1,8 +1,8 @@
 # start-monday-client
 
-Your starting point for monday.com client apps: the template for track 2 of **Become a monday developer**.
+Your starting point for monday.com client apps.
 
-Everything the course builds is already wired:
+Everything that is already wired:
 
 - **The SDK in two worlds.** It reads monday's context, sends notices and uses storage. Inside monday it uses the real SDK; in a plain browser tab a mock stands in.
 - **The API without leaking a token.** Inside monday it uses `SeamlessApiClient`. In `npm run dev`, a dev-only endpoint keeps your token on your machine.
