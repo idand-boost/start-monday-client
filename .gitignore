@@ -1,0 +1,12 @@
+node_modules
+dist
+*.zip
+*.tsbuildinfo
+.tanstack
+
+# Secrets: MONDAY_API_TOKEN lives in .env and must never be committed.
+.env
+.env.*
+!.env.example
+
+.DS_Store

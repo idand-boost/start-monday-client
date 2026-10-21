@@ -1,0 +1,33 @@
+# Ships the app to monday on every push to main (deploy-to-account lecture).
+# main is what users see: work on a branch, open a pull request, merge when it's ready.
+#
+# Set up once, in GitHub > Settings > Secrets and variables > Actions:
+#   Variables: MONDAY_APP_ID, MONDAY_APP_VERSION_ID (the two numbers in the Developer Center address)
+#   Secrets:   MONDAY_TOKEN (avatar > Developers > API Token)
+# Until MONDAY_APP_ID is set, this workflow is skipped, so a fresh copy of the template never fails here.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    if: ${{ vars.MONDAY_APP_ID != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm install -g @mondaycom/apps-cli
+      - run: mapps init --token "${{ secrets.MONDAY_TOKEN }}"
+      # --force sends it straight to the live version. A new feature needs a new app version:
+      # create it in the Developer Center and update MONDAY_APP_VERSION_ID.
+      - run: >
+          mapps code:push --client-side --directoryPath dist
+          --appId "${{ vars.MONDAY_APP_ID }}"
+          --appVersionId "${{ vars.MONDAY_APP_VERSION_ID }}" --force
